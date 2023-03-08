@@ -1,0 +1,185 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Create Team</title>
+    <link rel="stylesheet" href="css/style.css" />
+    <link rel="stylesheet" href="css/bootstrap.css" />
+  </head>
+  <body class="bg-dark">
+    <div class="container-fluid">
+      <a href="/" class="btn btn-info mx-5 mt-5">Back</a>
+      <div class="row justify-content-center align-items-center">
+        <div class="my-3 col-4">
+          <h1 class="h1 my-3 text-light text-center">Configure Your Team</h1>
+          <form
+            action="#"
+            data-th-action="@{/create}"
+            data-th-object="${team}"
+            method="post">
+            <div class="input-group mb-1">
+              <span class="input-group-text">Team Name</span>
+              <input type="text" class="form-control" data-th-field="*{name}" />
+            </div>
+            <div class="mb-1">
+              <span
+                class="error"
+                data-th-if="${#fields.hasErrors('name')}"
+                data-th-errors="*{name}">
+              </span>
+            </div>
+            <div class="" data-th-if="${#fields.hasErrors('global')}">
+              <span
+                class="error"
+                data-th-each="err : ${#fields.errors('global')}"
+                data-th-text="${err}">
+              </span>
+            </div>
+
+            <div class="input-group mb-1 mt-3">
+              <span class="input-group-text">Team Number </span>
+              <input type="number" class="form-control" data-th-field="*{id}" />
+            </div>
+            <div class="mb-3">
+              <span
+                class="error"
+                data-th-if="${#fields.hasErrors('id')}"
+                data-th-errors="*{id}">
+              </span>
+            </div>
+
+            <div class="input-group mb-1">
+              <span class="input-group-text">Supervisor Number </span>
+              <input
+                type="number"
+                class="form-control"
+                data-th-field="*{siteSupervisor}" />
+            </div>
+            <div class="mb-3">
+              <span
+                class="error"
+                data-th-if="${#fields.hasErrors('siteSupervisor')}"
+                data-th-errors="*{siteSupervisor}">
+              </span>
+            </div>
+
+            <div class="input-group mb-1">
+              <span class="input-group-text">REO Number </span>
+              <input
+                type="number"
+                class="form-control"
+                data-th-field="*{reo}" />
+            </div>
+            <div class="mb-3">
+              <span
+                class="error"
+                data-th-if="${#fields.hasErrors('reo')}"
+                data-th-errors="*{reo}">
+              </span>
+            </div>
+
+            <div class="input-group mb-1">
+              <span class="input-group-text">Driver Number </span>
+              <input
+                type="number"
+                class="form-control"
+                data-th-field="*{driver}" />
+            </div>
+            <div class="mb-3">
+              <span
+                class="error"
+                data-th-if="${#fields.hasErrors('driver')}"
+                data-th-errors="*{driver}">
+              </span>
+            </div>
+
+            <div class="input-group mb-1">
+              <span class="input-group-text">Worker Number </span>
+              <input
+                type="number"
+                class="form-control"
+                data-th-field="*{worker}" />
+            </div>
+            <div class="mb-3">
+              <span
+                class="error"
+                data-th-if="${#fields.hasErrors('worker')}"
+                data-th-errors="*{worker}">
+              </span>
+            </div>
+
+            <div class="mb-4">
+              <div
+                class="badge bg-light text-wrap fs-5 mb-1 text-muted"
+                style="width: 6rem">
+                Tool
+              </div>
+              <div class="form-check">
+                <input
+                  class="form-check-input"
+                  type="radio"
+                  value="true"
+                  id="tool-radio2"
+                  data-th-field="*{tool}" />
+                <label class="form-check-label text-light" for="tool-radio2">
+                  Yes
+                </label>
+              </div>
+              <div class="form-check">
+                <input
+                  class="form-check-input"
+                  type="radio"
+                  value="false"
+                  id="tool-radio1"
+                  data-th-field="*{tool}" />
+                <label class="form-check-label text-light" for="tool-radio1">
+                  No
+                </label>
+              </div>
+            </div>
+
+            <div class="mb-4">
+              <div
+                class="badge bg-light bg-gradient text-wrap fs-5 mb-1 text-muted"
+                style="width: auto">
+                Machinery
+              </div>
+              <div class="form-check">
+                <input
+                  class="form-check-input"
+                  type="radio"
+                  value="true"
+                  id="machinery-radio2"
+                  data-th-field="*{machinery}" />
+                <label
+                  class="form-check-label text-light"
+                  for="machinery-radio2">
+                  Yes
+                </label>
+              </div>
+              <div class="form-check">
+                <input
+                  class="form-check-input"
+                  type="radio"
+                  value="false"
+                  id="machinery-radio1"
+                  data-th-field="*{machinery}" />
+                <label
+                  class="form-check-label text-light"
+                  for="machinery-radio1">
+                  No
+                </label>
+              </div>
+            </div>
+            <div class="mb-3 d-flex justify-content-center align-items-center">
+              <button type="submit" class="btn btn-primary">Submit</button>
+            </div>
+          </form>
+        </div>
+      </div>
+    </div>
+    <script src="/js/script.js"></script>
+  </body>
+</html>

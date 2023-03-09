@@ -8,10 +8,12 @@ import jakarta.validation.constraints.NotNull;
 import jakarta.validation.constraints.Size;
 
 public class Team implements Serializable {
+    @NotNull(message = "Name cannot be null")
     @NotEmpty(message = "Name cannot be empty")
     @Size(min = 2, max = 64, message = "Name must be between 3 and 64 characters")
     private String name;
 
+    @NotNull(message = "Team number cannot be null")
     @NotEmpty(message = "Team number cannot be empty")
     @Size(min = 1, max = 64, message = "Team number cannot be empty")
     private String id = "1";

@@ -28,4 +28,8 @@ public class WorkdoneService {
     public List<String> getWorkdoneIds() {
         return wdRepo.getWorkdoneIds();
     }
+
+    public void deleteWorkdone(final String workdoneId) {
+        wdRepo.deleteWorkdone(workdoneId);
+    }
 }

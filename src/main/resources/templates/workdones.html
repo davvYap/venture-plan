@@ -1,0 +1,72 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Team Info</title>
+
+    <link rel="stylesheet" href="/css/bootstrap.css" />
+    <link rel="stylesheet" href="/css/style.css" />
+  </head>
+  <body class="">
+    <div class="container-fluid context">
+      <a href="/" class="btn btn-outline-light mx-5 mt-5">Home</a>
+      <div class="row justify-content-center align-items-center">
+        <div class="my-3 col-4">
+          <h1 class="h1 my-3 text-light text-center">All Workdones</h1>
+          <div class="table-responsive">
+            <table
+              class="table table-hover table-light"
+              data-th-object="${team}">
+              <thead>
+                <tr>
+                  <th scope="col">Workdone ID</th>
+                  <th scope="col">Date of Work</th>
+                  <th scope="col">Team</th>
+                  <th scope="col">Type</th>
+                  <th scope="col">Quantity</th>
+                </tr>
+              </thead>
+              <tbody>
+                <tr data-th-each="workdone : ${workdones}">
+                  <td scope="row">
+                    <a
+                      data-th-href="@{'/workdone/' + ${workdone.workdoneId}}"
+                      data-th-text="${workdone.workdoneId}"></a>
+                  </td>
+                  <td data-th-text="${workdone.dateOfWork}"></td>
+                  <td data-th-text="${workdone.team}"></td>
+                  <td data-th-text="${workdone.type}"></td>
+                  <td data-th-text="${workdone.quantity}"></td>
+                </tr>
+              </tbody>
+            </table>
+          </div>
+
+          <div class="mb-3 d-flex justify-content-center align-items-center">
+            <a href="/workdone" class="btn btn-outline-light" role="button"
+              >Create</a
+            >
+          </div>
+        </div>
+      </div>
+    </div>
+    <div class="area">
+      <ul class="circles">
+        <li></li>
+        <li></li>
+        <li></li>
+        <li></li>
+        <li></li>
+        <li></li>
+        <li></li>
+        <li></li>
+        <li></li>
+        <li></li>
+      </ul>
+    </div>
+    <script src="/js/script.js"></script>
+    <script src="/js/bootstrap.js"></script>
+  </body>
+</html>

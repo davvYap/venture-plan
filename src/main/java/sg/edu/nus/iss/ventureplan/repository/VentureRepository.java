@@ -1,8 +1,7 @@
 package sg.edu.nus.iss.ventureplan.repository;
 
-import java.util.ArrayList;
+import java.util.Comparator;
 import java.util.List;
-import java.util.stream.Collector;
 import java.util.stream.Collectors;
 
 import org.springframework.beans.factory.annotation.Autowired;
@@ -38,6 +37,7 @@ public class VentureRepository {
                 .stream()
                 .filter(t -> Team.class.isInstance(t))
                 .map(t -> Team.class.cast(t))
+                .sorted(Comparator.comparing(Team::getName))
                 .collect(Collectors.toList());
 
         return allTeams;

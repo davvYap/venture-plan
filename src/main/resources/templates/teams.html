@@ -5,24 +5,20 @@
     <meta http-equiv="X-UA-Compatible" content="IE=edge" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <title>Team Info</title>
-    <link rel="stylesheet" href="../css/style.css" />
-    <link rel="stylesheet" href="../css/bootstrap.css" />
+
+    <link rel="stylesheet" href="/css/bootstrap.css" />
+    <link rel="stylesheet" href="/css/style.css" />
   </head>
   <body class="">
     <div class="container-fluid context">
-      <div class="row mx-5 mt-5 d-flex justify-content-around">
-        <span class="col-2 text-center">
-          <a href="/" class="btn btn-outline-light">Home</a>
-        </span>
-        <span class="col-2 text-center">
-          <a href="/create/teams" class="btn btn-outline-light">Teams</a>
-        </span>
-      </div>
+      <a href="/" class="btn btn-outline-light mx-5 mt-5">Home</a>
       <div class="row justify-content-center align-items-center">
         <div class="my-3 col-4">
-          <h1 class="h1 my-3 text-light text-center">Team Information</h1>
+          <h1 class="h1 my-3 text-light text-center">Teams Information</h1>
           <div class="table-responsive">
-            <table class="table table-light" data-th-object="${team}">
+            <table
+              class="table table-hover table-light"
+              data-th-object="${team}">
               <thead>
                 <tr>
                   <th scope="col">Team</th>
@@ -35,14 +31,18 @@
                 </tr>
               </thead>
               <tbody>
-                <tr class="">
-                  <td scope="row" data-th-text="*{teamName}"></td>
-                  <td data-th-text="*{siteSupervisor}"></td>
-                  <td data-th-text="*{reo}"></td>
-                  <td data-th-text="*{driver}"></td>
-                  <td data-th-text="*{worker}"></td>
-                  <td data-th-text="${hasTool} ? '1' : '0'"></td>
-                  <td data-th-text="${hasMachinery} ? '1' : '0'"></td>
+                <tr data-th-each="team : ${allTeams}">
+                  <td scope="row">
+                    <a
+                      data-th-href="@{'/create/' + ${team.teamName}}"
+                      data-th-text="${team.teamName}"></a>
+                  </td>
+                  <td data-th-text="${team.siteSupervisor}"></td>
+                  <td data-th-text="${team.reo}"></td>
+                  <td data-th-text="${team.driver}"></td>
+                  <td data-th-text="${team.worker}"></td>
+                  <td data-th-text="${team.tool} ? '1' : '0'"></td>
+                  <td data-th-text="${team.machinery} ? '1' : '0'"></td>
                 </tr>
               </tbody>
             </table>
@@ -70,7 +70,7 @@
         <li></li>
       </ul>
     </div>
-    <script src="../js/script.js"></script>
-    <script src="../js/bootstrap.js"></script>
+    <script src="/js/script.js"></script>
+    <script src="/js/bootstrap.js"></script>
   </body>
 </html>

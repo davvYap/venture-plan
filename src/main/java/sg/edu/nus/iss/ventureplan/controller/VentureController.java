@@ -1,5 +1,7 @@
 package sg.edu.nus.iss.ventureplan.controller;
 
+import java.util.List;
+
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
@@ -7,8 +9,10 @@ import org.springframework.validation.BindingResult;
 import org.springframework.validation.ObjectError;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.ModelAttribute;
+import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
+import org.springframework.web.bind.annotation.RequestParam;
 
 import jakarta.validation.Valid;
 import sg.edu.nus.iss.ventureplan.model.Team;
@@ -30,7 +34,7 @@ public class VentureController {
     @PostMapping
     public String showTeam(Model model, @ModelAttribute @Valid Team team, BindingResult bindings) {
         if (bindings.hasErrors()) {
-            System.out.println(">>>>> has error");
+            System.out.println("Team creation >>>>> has error");
             return "create";
         }
         team.setTeamName();
@@ -46,6 +50,31 @@ public class VentureController {
 
         model.addAttribute("hasTool", team.isTool());
         model.addAttribute("hasMachinery", team.isMachinery());
+        return "team";
+    }
+
+    @GetMapping(path = "/teams")
+    public String showAllTeams(Model model) {
+        List<Team> allTeams = ventureService.findAllTeam();
+        model.addAttribute("allTeams", allTeams);
+        return "teams";
+    }
+
+    // query string
+    @GetMapping(path = "/team")
+    public String getTeamByQueryStr(Model model, @RequestParam(defaultValue = "David_1") String teamName) {
+        Team selectedTeam = ventureService.findByTeamName(teamName);
+        model.addAttribute("team", selectedTeam);
+        return "team";
+    }
+
+    // path variable
+    @GetMapping(path = "{teamName}")
+    public String getTeamByPathVar(Model model, @PathVariable String teamName) {
+        Team selectedTeam = ventureService.findByTeamName(teamName);
+        model.addAttribute("team", selectedTeam);
+        model.addAttribute("hasTool", selectedTeam.isTool());
+        model.addAttribute("hasMachinery", selectedTeam.isMachinery());
         return "team";
     }
 }

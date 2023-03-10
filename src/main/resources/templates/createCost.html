@@ -1,0 +1,139 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Create Cost</title>
+    <link rel="stylesheet" href="/css/style.css" />
+    <link rel="stylesheet" href="/css/bootstrap.css" />
+  </head>
+  <body class="">
+    <div class="container-fluid context">
+      <a href="/cost" class="btn btn-outline-light mx-5 mt-5">Back</a>
+      <div class="row justify-content-center align-items-center">
+        <div class="mb-5 col-4">
+          <h1 class="h1 my-3 text-light text-center">Create New Cost Version</h1>
+          <form action="#" data-th-action="@{/cost/create}" data-th-object="${cost}" method="post">
+            <div class="input-group mb-1">
+              <span class="input-group-text">Version ID</span>
+              <input type="text" class="form-control" data-th-field="*{version}" />
+            </div>
+            <div class="mb-1">
+              <span
+                class="error"
+                data-th-if="${#fields.hasErrors('version')}"
+                data-th-errors="*{version}">
+              </span>
+            </div>
+            <div class="" data-th-if="${#fields.hasErrors('global')}">
+              <span
+                class="error"
+                data-th-each="err : ${#fields.errors('global')}"
+                data-th-text="${err}">
+              </span>
+            </div>
+
+            <div class="input-group mb-1 mt-3">
+              <span class="input-group-text">Site Supervisor Cost $</span>
+              <input type="number" class="form-control" data-th-field="*{siteSupervisorCost}" />
+              <span class="input-group-text">per pax</span>
+            </div>
+            <div class="mb-3">
+              <span
+                class="error"
+                data-th-if="${#fields.hasErrors('siteSupervisorCost')}"
+                data-th-errors="*{siteSupervisorCost}">
+              </span>
+            </div>
+
+            <div class="input-group mb-1">
+              <span class="input-group-text">REO Cost $</span>
+              <input type="number" class="form-control" data-th-field="*{reoCost}" />
+              <span class="input-group-text">per pax</span>
+            </div>
+            <div class="mb-3">
+              <span
+                class="error"
+                data-th-if="${#fields.hasErrors('reoCost')}"
+                data-th-errors="*{reoCost}">
+              </span>
+            </div>
+
+            <div class="input-group mb-1">
+              <span class="input-group-text">Driver Cost $</span>
+              <input type="number" class="form-control" data-th-field="*{driverCost}" />
+              <span class="input-group-text">per pax</span>
+            </div>
+            <div class="mb-3">
+              <span
+                class="error"
+                data-th-if="${#fields.hasErrors('driverCost')}"
+                data-th-errors="*{driverCost}">
+              </span>
+            </div>
+
+            <div class="input-group mb-1">
+              <span class="input-group-text">Worker Cost $</span>
+              <input type="number" class="form-control" data-th-field="*{workerCost}" />
+              <span class="input-group-text">per pax</span>
+            </div>
+            <div class="mb-3">
+              <span
+                class="error"
+                data-th-if="${#fields.hasErrors('workerCost')}"
+                data-th-errors="*{workerCost}">
+              </span>
+            </div>
+
+            <div class="input-group mb-1">
+              <span class="input-group-text">Tool Cost $</span>
+              <input type="number" class="form-control" data-th-field="*{toolCost}" />
+              <span class="input-group-text">per unit</span>
+            </div>
+            <div class="mb-3">
+              <span
+                class="error"
+                data-th-if="${#fields.hasErrors('toolCost')}"
+                data-th-errors="*{toolCost}">
+              </span>
+            </div>
+
+            <div class="input-group mb-1">
+              <span class="input-group-text">Machinery Cost $</span>
+              <input type="number" class="form-control" data-th-field="*{machineryCost}" />
+              <span class="input-group-text">per unit</span>
+            </div>
+            <div class="mb-3">
+              <span
+                class="error"
+                data-th-if="${#fields.hasErrors('machineryCost')}"
+                data-th-errors="*{machineryCost}">
+              </span>
+            </div>
+
+            <div class="mb-3 d-flex justify-content-center align-items-center">
+              <button type="submit" class="btn btn-outline-light">Create</button>
+            </div>
+          </form>
+        </div>
+      </div>
+    </div>
+    <div class="area">
+      <ul class="circles">
+        <li></li>
+        <li></li>
+        <li></li>
+        <li></li>
+        <li></li>
+        <li></li>
+        <li></li>
+        <li></li>
+        <li></li>
+        <li></li>
+      </ul>
+    </div>
+    <script src="/js/script.js"></script>
+    <script src="/js/bootstrap.js"></script>
+  </body>
+</html>

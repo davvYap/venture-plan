@@ -114,7 +114,7 @@ public class WorkdoneController {
             return "editWd";
         }
         workdone.setWorkdoneId();
-        if (!wdSvc.isUniqueTeamName(workdone.getWorkdoneId())) {
+        if (!wdSvc.isUniqueWorkdone(workdone.getWorkdoneId())) {
             wdSvc.deleteWorkdone(workdone.getWorkdoneId());
         }
         wdSvc.save(workdone);

@@ -31,7 +31,7 @@ public class VentureService {
 
     public Boolean isUniqueTeamName(String teamName) {
         List<String> teamNames = ventureRepo.getTeamNames();
-        teamNames.stream().forEach(t -> System.out.println(t));
+        // teamNames.stream().forEach(t -> System.out.println(t));
         for (String name : teamNames) {
             if (name != null & name.contains(teamName)) {
                 return false;

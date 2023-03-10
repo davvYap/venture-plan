@@ -4,50 +4,50 @@
     <meta charset="UTF-8" />
     <meta http-equiv="X-UA-Compatible" content="IE=edge" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <title>All Teams</title>
+    <title>Cost Versions</title>
 
     <link rel="stylesheet" href="/css/bootstrap.css" />
     <link rel="stylesheet" href="/css/style.css" />
   </head>
   <body class="">
     <div class="container-fluid context">
-      <a href="/" class="btn btn-outline-light mx-5 mt-5">Home</a>
+      <a href="/cost" class="btn btn-outline-light mx-5 mt-5">Main</a>
       <div class="row justify-content-center align-items-center">
         <div class="my-3 col-4">
-          <h1 class="h1 my-3 text-light text-center">Teams Information</h1>
+          <h1 class="h1 my-3 text-light text-center">Costs Versions</h1>
           <div class="table-responsive">
-            <table class="table table-hover table-light" data-th-object="${team}">
+            <table class="table table-hover table-light" data-th-object="${cost}">
               <thead>
                 <tr>
-                  <th scope="col">Team</th>
-                  <th scope="col">Site Supervisor</th>
-                  <th scope="col">REO</th>
-                  <th scope="col">Driver</th>
-                  <th scope="col">Worker</th>
-                  <th scope="col">Tool</th>
-                  <th scope="col">Machinery</th>
+                  <th scope="col">Version</th>
+                  <th scope="col">Site Supervisor cost</th>
+                  <th scope="col">REO cost</th>
+                  <th scope="col">Driver cost</th>
+                  <th scope="col">Worker cost</th>
+                  <th scope="col">Tool cost</th>
+                  <th scope="col">Machinery cost</th>
                 </tr>
               </thead>
               <tbody>
-                <tr data-th-each="team : ${allTeams}">
+                <tr data-th-each="cost : ${allCost}">
                   <td scope="row">
                     <a
-                      data-th-href="@{'/create/' + ${team.teamName}}"
-                      data-th-text="${team.teamName}"></a>
+                      data-th-href="@{'/cost/' + ${cost.version}}"
+                      data-th-text="${cost.version}"></a>
                   </td>
-                  <td data-th-text="${team.siteSupervisor}"></td>
-                  <td data-th-text="${team.reo}"></td>
-                  <td data-th-text="${team.driver}"></td>
-                  <td data-th-text="${team.worker}"></td>
-                  <td data-th-text="${team.tool} ? '1' : '0'"></td>
-                  <td data-th-text="${team.machinery} ? '1' : '0'"></td>
+                  <td data-th-text="${cost.siteSupervisorCost}"></td>
+                  <td data-th-text="${cost.reoCost}"></td>
+                  <td data-th-text="${cost.driverCost}"></td>
+                  <td data-th-text="${cost.workerCost}"></td>
+                  <td data-th-text="${cost.toolCost}"></td>
+                  <td data-th-text="${cost.machineryCost}"></td>
                 </tr>
               </tbody>
             </table>
           </div>
 
           <div class="mb-3 d-flex justify-content-center align-items-center">
-            <a href="/create" class="btn btn-outline-light" role="button">Create</a>
+            <a href="/cost/create" class="btn btn-outline-light" role="button">Create</a>
           </div>
         </div>
       </div>

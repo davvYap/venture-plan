@@ -19,10 +19,10 @@
         </span>
       </div>
       <div class="row justify-content-center align-items-center">
-        <div class="my-3 col-4">
+        <div class="my-3 col-5">
           <h1 class="h1 my-3 text-light text-center">Workdone Details</h1>
           <div class="table-responsive">
-            <table class="table table-light" data-th-object="${workdone}">
+            <table id="workdoneTable" class="table table-light" data-th-object="${workdone}">
               <thead>
                 <tr>
                   <th scope="col">Workdone ID</th>
@@ -35,10 +35,10 @@
               <tbody>
                 <tr class="">
                   <td scope="row" data-th-text="*{workdoneId}"></td>
+                  <td id="workdoneDate" data-th-text="*{dateOfWork}"></td>
                   <td data-th-text="*{team}"></td>
                   <td data-th-text="*{type}"></td>
                   <td data-th-text="*{quantity}"></td>
-                  <td data-th-text="*{dateOfWork}"></td>
                 </tr>
               </tbody>
             </table>
@@ -46,10 +46,28 @@
 
           <div class="row mx-5 mt-5 d-flex justify-content-around">
             <span class="col-2 text-center">
-              <a href="/workdone" class="btn btn-outline-light" role="button">Create</a>
+              <a href="/workdone" class="btn btn-outline-light" role="button" style="width: 6rem"
+                >Create</a
+              >
             </span>
             <span class="col-2 text-center">
-              <a href="/workdone/delete" class="btn btn-outline-danger" role="button">Delete</a>
+              <a
+                id="wdUpdateBtn"
+                data-th-href="@{'/workdone/edit/' + ${workdone.workdoneId}}"
+                class="btn btn-outline-warning"
+                role="button"
+                style="width: 6rem"
+                >Edit</a
+              >
+            </span>
+            <span class="col-2 text-center">
+              <a
+                data-th-href="@{'/workdone/delete/' + ${workdone.workdoneId}}"
+                class="btn btn-outline-danger"
+                style="width: 6rem"
+                role="button">
+                Delete
+              </a>
             </span>
           </div>
         </div>

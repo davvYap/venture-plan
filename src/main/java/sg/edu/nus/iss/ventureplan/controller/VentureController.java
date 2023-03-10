@@ -77,4 +77,41 @@ public class VentureController {
         model.addAttribute("hasMachinery", selectedTeam.isMachinery());
         return "team";
     }
+
+    // DELETE
+    @GetMapping(path = "/delete/{teamName}")
+    public String deleteByTeamName(Model model, @PathVariable String teamName) {
+        System.out.println("Deleted team >>> " + teamName);
+        ventureService.deleteTeam(teamName);
+
+        List<Team> allTeams = ventureService.findAllTeam();
+        model.addAttribute("allTeams", allTeams);
+        return "teams";
+    }
+
+    // EDIT team
+    @GetMapping(path = "/edit/{teamName}")
+    public String editTeam(Model model, @PathVariable String teamName) {
+        Team team = ventureService.findByTeamName(teamName);
+        model.addAttribute("team", team);
+        return "editTeam";
+    }
+
+    // EDIT team
+    @PostMapping(path = "/edit")
+    public String updateTeam(Model model, @ModelAttribute @Valid Team team, BindingResult bindings) {
+        if (bindings.hasErrors()) {
+            System.out.println("Team update >>>>> has error");
+            return "editTeam";
+        }
+        team.setTeamName();
+        if (!ventureService.isUniqueTeamName(team.getTeamName())) {
+            ventureService.deleteTeam(team.getTeamName());
+        }
+        ventureService.save(team);
+        System.out.printf("Team %s is updated !!! \n", team.getTeamName());
+        model.addAttribute("hasTool", team.isTool());
+        model.addAttribute("hasMachinery", team.isMachinery());
+        return "team";
+    }
 }

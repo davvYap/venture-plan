@@ -39,4 +39,8 @@ public class VentureService {
         }
         return true;
     }
+
+    public void deleteTeam(final String teamName) {
+        ventureRepo.deleteTeam(teamName);
+    }
 }

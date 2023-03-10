@@ -20,7 +20,7 @@ public class Workdone implements Serializable {
     private String quantity;
 
     @NotNull(message = "Date cannot be null")
-    @DateTimeFormat(pattern = "dd-MM-yyyy")
+    @DateTimeFormat(pattern = "yyyy-MM-dd")
     private LocalDate dateOfWork;
 
     @NotNull(message = "Team cannot be null")

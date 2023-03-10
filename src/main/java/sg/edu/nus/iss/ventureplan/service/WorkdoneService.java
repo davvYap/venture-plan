@@ -29,6 +29,17 @@ public class WorkdoneService {
         return wdRepo.getWorkdoneIds();
     }
 
+    public Boolean isUniqueTeamName(String workdoneId) {
+        List<String> workdonIds = wdRepo.getWorkdoneIds();
+        workdonIds.stream().forEach(t -> System.out.println(t));
+        for (String name : workdonIds) {
+            if (name != null & name.contains(workdoneId)) {
+                return false;
+            }
+        }
+        return true;
+    }
+
     public void deleteWorkdone(final String workdoneId) {
         wdRepo.deleteWorkdone(workdoneId);
     }

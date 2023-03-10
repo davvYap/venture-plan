@@ -4,17 +4,25 @@
     <meta charset="UTF-8" />
     <meta http-equiv="X-UA-Compatible" content="IE=edge" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <title>Create Workdone</title>
-    <link rel="stylesheet" href="css/style.css" />
-    <link rel="stylesheet" href="css/bootstrap.css" />
+    <title>Edit Workdone</title>
+    <link rel="stylesheet" href="/css/style.css" />
+    <link rel="stylesheet" href="/css/bootstrap.css" />
   </head>
   <body class="">
     <div class="container-fluid context">
-      <a href="/" class="btn btn-outline-light mx-5 mt-5">Back</a>
+      <a
+        data-th-href="@{'/workdone/' + ${workdone.workdoneId}}"
+        class="btn btn-outline-light mx-5 mt-5"
+        >Back</a
+      >
       <div class="row justify-content-center align-items-center">
         <div class="mb-5 col-6">
-          <h1 class="h1 mt-3 mb-5 text-light text-center">Workdone details</h1>
-          <form action="#" data-th-action="@{/workdone}" data-th-object="${workdone}" method="post">
+          <h1 class="h1 mt-3 mb-5 text-light text-center">Edit Workdone details</h1>
+          <form
+            action="#"
+            data-th-action="@{/workdone/edit}"
+            data-th-object="${workdone}"
+            method="post">
             <div class="badge bg-light text-wrap fs-5 mb-2 text-muted" style="width: 10rem">
               Type of Work
             </div>
@@ -27,7 +35,7 @@
                   id="pipelaying-radio2"
                   data-th-field="*{type}" />
                 <label class="form-check-label text-light" for="pipelaying-radio2">
-                  <img src="images/pipe.png" alt="" width="200" height="200" />
+                  <img src="/images/pipe.png" alt="" width="200" height="200" />
                   <p>Pipe Laying</p>
                 </label>
               </div>
@@ -39,7 +47,7 @@
                   id="supplyteam-radio1"
                   data-th-field="*{type}" />
                 <label class="form-check-label text-light" for="supplyteam-radio1">
-                  <img src="images/worker.png" alt="" width="200" height="200" />
+                  <img src="/images/worker.png" alt="" width="200" height="200" />
                   <p>Supply Team</p>
                 </label>
               </div>
@@ -66,8 +74,9 @@
 
             <div class="input-group mb-1 mt-3">
               <span class="input-group-text">Date of Work </span>
+              <!-- <input type="date" class="form-control" data-th-field="*{dateOfWork}" /> -->
               <input
-                id="workdoneDate"
+                id="editWorkdoneDate"
                 type="date"
                 class="form-control"
                 data-th-field="*{dateOfWork}" />
@@ -101,7 +110,7 @@
             </div>
 
             <div class="mb-3 d-flex justify-content-center align-items-center">
-              <button type="submit" class="btn btn-outline-light">Create</button>
+              <button type="submit" class="btn btn-outline-light">Update</button>
             </div>
           </form>
         </div>
